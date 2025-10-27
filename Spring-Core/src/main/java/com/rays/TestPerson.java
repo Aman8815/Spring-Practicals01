@@ -1,0 +1,29 @@
+
+package com.rays;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+
+public class TestPerson {
+
+	public static void main(String[] args) {
+
+		BeanFactory factory = new XmlBeanFactory(new ClassPathResource("employee.xml"));
+
+		Employee p = (Employee) factory.getBean("employee");
+
+		System.out.println("person's Empname: " + p.getEmpName());
+		System.out.println("person's salary: " + p.getSalary());
+		
+//		System.out.println("-----");
+//		
+//		Person p1 = (Person) factory.getBean("person1");
+//
+//		System.out.println("person's name: " + p1.getName());
+//		System.out.println("person's address: " + p1.getAddress());
+
+	}
+
+}
+
