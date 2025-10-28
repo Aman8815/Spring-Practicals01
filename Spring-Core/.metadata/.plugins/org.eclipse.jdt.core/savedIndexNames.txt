@@ -1,0 +1,10 @@
+INDEX VERSION 1.131+C:\Users\Aman Singh Yashona\OneDrive\Desktop\Spring-Core\.metadata\.plugins\org.eclipse.jdt.core
+1024446143.index
+4177265725.index
+2669248929.index
+4011405033.index
+990982771.index
+1033415215.index
+1502783774.index
+2017328478.index
+566967775.index

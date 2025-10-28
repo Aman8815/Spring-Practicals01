@@ -1,0 +1,34 @@
+package com.rays.ioc;
+
+public class Order {
+	
+	private Payment Payment;
+	private Inventory Inventory;
+	
+	
+	
+	public void setPayment(Payment payment) {
+		this.Payment = Payment;
+	}
+	public void setInverntory(Inventory inverntory) {
+		this.Inventory = Inventory;
+	}
+	
+	public void bookATicket(int items) {
+		
+		int price = 10;
+		
+		int  totalAmount = items*price;
+		
+		double updateBalance = Payment.makePayment(totalAmount);
+		
+		int updateStock = Inventory.sold(items);
+		
+		
+		System.out.println("Tickets are Booked");
+		System.out.println("UPdated Balance " +updateBalance);
+		System.out.println("UpdatedStock" + updateStock);
+		System.out.println("Tickets booked" +items);
+	
+	}
+}
