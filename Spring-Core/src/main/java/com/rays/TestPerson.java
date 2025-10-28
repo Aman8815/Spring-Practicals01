@@ -28,6 +28,13 @@ public class TestPerson {
 		System.out.println("Doctor's id :"+d.getId());
 		System.out.println("Doctor's name:"+d.getName());
 		System.out.println("Doctor's S[ecilities:"+d.getSpecilites());
+		
+		System.out.println("--------");
+		Patient p2 = (Patient) factory.getBean("patient");
+		System.out.println("Patient id :"+p2.getId());
+		System.out.println("Patient name:"+p2.getName());
+		System.out.println("Patient Disease:"+p2.getDisease());
+		
 
 	}
 

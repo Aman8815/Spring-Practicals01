@@ -6,5 +6,6 @@
 	<import resource="person.xml" />
 	<import resource="employee.xml" />
 	<import resource="Doctor.xml"/>
+	<import resource="Patient.xml"/>
 
 </beans>

@@ -3,9 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<import resource="person.xml" />
-	<import resource="employee.xml" />
-	<import resource="Doctor.xml"/>
-	<import resource="Patient.xml"/>
+	<bean id="patient" class="com.rays.Patient">
+		<property name="id" value="1" />
+		<property name="name" value="chetan" />
+		<property name="disease" value="cancer"></property>
+	</bean>
 
 </beans>
