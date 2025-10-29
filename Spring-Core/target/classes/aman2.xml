@@ -12,16 +12,12 @@
        
        <context:component-scan base-package="com.rays.ioc2"/>
        
-       <bean name="payment" class="com.rays.ioc2.Payment">
+       <bean name="payment" class="com.rays.ioc2.Payment"/>
+       <bean name="car" class="com.rays.ioc2.Car"/>
        
+       <bean name="order2" class="com.rays.ioc2.Order2">
+       <constructor-arg  ref="payment"/>
+       <constructor-arg ref="car"/>
        </bean>
        
-       <bean name="car" class="com.rays.ioc2.Car">
-       
-       </bean>
-       
-       <bean name="order" class="com.rays.ioc2.Order">
-       <property name="payment" ref="payment"/>
-       <property name="car" ref="car"/>
-       </bean>
        </beans>

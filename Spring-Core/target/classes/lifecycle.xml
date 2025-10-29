@@ -10,18 +10,8 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
        
-       <context:component-scan base-package="com.rays.ioc2"/>
        
-       <bean name="payment" class="com.rays.ioc2.Payment">
-       
-       </bean>
-       
-       <bean name="car" class="com.rays.ioc2.Car">
+       <bean name="mybean" class="com.rays.lifecycle.MyBean" init-method="init" destroy-method="destroy">
        
        </bean>
-       
-       <bean name="order" class="com.rays.ioc2.Order">
-       <property name="payment" ref="payment"/>
-       <property name="car" ref="car"/>
-       </bean>
-       </beans>
+      </beans>

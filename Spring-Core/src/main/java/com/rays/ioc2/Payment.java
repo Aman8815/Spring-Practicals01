@@ -1,7 +1,9 @@
 package com.rays.ioc2;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public class Payment {
-	
+	@Value(value="10000")
 	double balance = 0;
 
 	public double getBalance() {

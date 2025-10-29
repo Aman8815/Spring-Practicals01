@@ -13,11 +13,11 @@
        <context:component-scan base-package="com.rays.ioc2"/>
        
        <bean name="payment" class="com.rays.ioc2.Payment">
-       <property name="balance" value="10000"></property>
+       
        </bean>
        
        <bean name="car" class="com.rays.ioc2.Car">
-       <property name="stock" value="10"></property>
+       
        </bean>
        
        <bean name="order" class="com.rays.ioc2.Order">
