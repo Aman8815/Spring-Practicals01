@@ -1,4 +1,4 @@
-package com.rays.ioc2;
+ package com.rays.ioc2;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

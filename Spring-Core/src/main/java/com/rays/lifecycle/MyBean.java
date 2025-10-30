@@ -7,7 +7,7 @@ public class MyBean {
 	}
 	
 	public void service() {
-		System.out.println("Service Method : Create Manully");
+		System.out.println("Service Method : Create Manully and called");
 	}
 	
 	public void destroy() {
