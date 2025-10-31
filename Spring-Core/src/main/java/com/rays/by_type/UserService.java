@@ -2,7 +2,7 @@ package com.rays.by_type;
 
 public class UserService {
 	
-	private UserDAOImp userDao;
+	private UserDAOInt userDao;
 	
 	public void setuserDao(UserDAOImp userDao) {
 		this.userDao = userDao;
