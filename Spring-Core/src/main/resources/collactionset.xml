@@ -23,9 +23,4 @@
 	</property>
 	</bean>
 	
-	 <bean name="order2" class="com.rays.ioc.Order2">
-       <constructor-arg ref="payment"/>
-       <constructor-arg ref="inventory"/>
-       </bean>
-	
 	</beans>
