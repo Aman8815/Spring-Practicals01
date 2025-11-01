@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="MyBean1" class="com.rays.collaction.MyBean1">
+	<property name="queue">
+	<list>
+	<value>one</value>
+	<value>two</value>
+	<value>one</value>
+	<value>three</value>
+	</list>
+	</property>
+	
+	<property name="set">
+	<set>
+	<value>one</value>
+	<value>two</value>
+	<value>one</value>
+	<value>three</value>
+	</set>
+	</property>
+	</bean>
+	
+	 <bean name="order2" class="com.rays.ioc.Order2">
+       <constructor-arg ref="payment"/>
+       <constructor-arg ref="inventory"/>
+       </bean>
+	
+	</beans>

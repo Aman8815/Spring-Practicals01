@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean name="mybean" class="com.rays.collaction.MyBean">
+	<property name="list">
+	<list>
+	<value>one</value>
+	<value>two</value>
+	</list>
+	</property>
+	<property name="map">
+	<map>
+	<entry>
+	<key>
+	<value>One</value>
+	</key>
+	<value>Value1</value>
+	</entry>
+	<entry>
+	<key>
+	<value>Two</value>
+	</key>
+	<ref bean="datasource"/>
+	</entry>
+	</map>
+	</property>
+	
+	</bean>
+	
+	<bean name="datasource" class="com.rays.collaction.DataSource">
+	<property name="url" value="amanurl"/>
+	<property name="userName" value="amanUserName"/>
+	<property name="password" value="aman123"/>
+	</bean>
+	</beans>
