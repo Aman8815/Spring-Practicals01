@@ -1,9 +1,12 @@
 package com.rays.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import org.springframework.transaction.annotation.Propagation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 
@@ -32,6 +35,25 @@ public class UserServiceImp implements UserServiceInt {
 	public void update(UserDTO dto) {
 		dao.update(dto);
 		
+	}
+
+
+	public UserDTO findByLogin(String login) {
+		// TODO Auto-generated method stub
+		
+		return dao.findByLogin(login);
+	}
+
+
+	public UserDTO authenticate(String gmail, String password) {
+		// TODO Auto-generated method stub
+		return dao.authenticate(gmail, password);
+	}
+
+
+	public List search() {
+		// TODO Auto-generated method stub
+		return dao.search();
 	}
 
 	

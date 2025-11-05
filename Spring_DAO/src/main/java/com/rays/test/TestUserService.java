@@ -1,5 +1,8 @@
 package com.rays.test;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
@@ -24,7 +27,11 @@ public class TestUserService {
 		
 		//user.testUpdate();
 		//user.Testadd();
-		user.testdelete(4);
+		//user.testdelete(4);
+		//user.findbylogin();
+		//user.authenticate();
+		user.testsearch();
+		
 		
 	}
 	
@@ -55,5 +62,42 @@ public class TestUserService {
 		
 	}
     
+	public void findbylogin() {
+		String login = "vishal@gmail.com";
+		UserDTO dto = service.findByLogin(login);
+		if(dto != null) {
+			System.out.println(dto.getId());
+			System.out.println(dto.getFirstName());
+		}
+		
+	}
+	
+	public void authenticate() {
+		String gmail = "aman@gmail.com";
+	    String password = "aman123";
+	   
+	    UserDTO dto = service.authenticate(gmail, password);
+	    System.out.println(dto.getId());
+	    System.out.println(dto.getFirstName());
+	}
+	
+	public void testsearch() {
+		
+		UserDTO dto = new UserDTO();
+		
+		List list = service.search();
+		
+		Iterator it = list.iterator();
+		
+		while(it.hasNext()) {
+			dto = (UserDTO) it.next();
+			System.out.print(dto.getId()+"  ");
+			System.out.print(dto.getFirstName()+ "   ");
+			System.out.print(dto.getLastName());
+			System.out.println();
+		}
+		
+		
+	}
 	
 }
