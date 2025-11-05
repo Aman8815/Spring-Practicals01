@@ -56,6 +56,12 @@ public class UserServiceImp implements UserServiceInt {
 		return dao.search();
 	}
 
+
+	public List search(UserDTO dto, int pageNo, int PageSize) {
+		
+		return dao.search(dto, pageNo, PageSize);
+	}
+
 	
 	
 

@@ -84,4 +84,22 @@ public class UserDAOImp implements UserDAOInt {
 			return list;
 	}
 
+	public List search(UserDTO dto, int pageNo, int pageSize) {
+		
+		StringBuilder sql = new StringBuilder("select * from st_user where 1=1");
+		if (dto != null) {
+			if (dto.getFirstName() != null && dto.getFirstName().length() > 0) {
+				sql.append(" and firstName like '" + dto.getFirstName() + "%'");
+			}
+		}
+
+		if (pageSize > 0) {
+			pageNo = (pageNo - 1) * pageSize;
+			sql.append(" limit " + pageNo + ", " + pageSize);
+		}
+		System.out.println("sql===> " + sql.toString());
+		List l = jdbcTemplete.query(sql.toString(), new NewMapper());
+		return l;
+	}
+
 }

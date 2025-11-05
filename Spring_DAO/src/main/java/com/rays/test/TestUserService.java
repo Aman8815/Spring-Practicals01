@@ -84,8 +84,8 @@ public class TestUserService {
 	public void testsearch() {
 		
 		UserDTO dto = new UserDTO();
-		
-		List list = service.search();
+		dto.setFirstName("aman");
+		List list = service.search(dto,1,5);
 		
 		Iterator it = list.iterator();
 		

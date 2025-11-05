@@ -15,5 +15,6 @@ public interface UserDAOInt {
 	public UserDTO findByLogin(String login);
 	public UserDTO authenticate (String gmail , String password);
 	public List search();
+	public List search(UserDTO dto,int pageNo,int pageSize);
 
 }
