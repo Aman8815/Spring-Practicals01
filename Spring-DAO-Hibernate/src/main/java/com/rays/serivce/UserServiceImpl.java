@@ -1,5 +1,7 @@
 package com.rays.serivce;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -27,6 +29,26 @@ public class UserServiceImpl implements UserServiceInt{
 	public void delete(UserDTO dto) {
 		dao.delete(dto);
 		
+	}
+    @Transactional(readOnly = true)
+	public UserDTO findBypk(long pk) {
+		// TODO Auto-generated method stub
+		return dao.findBypk(pk);
+	}
+    @Transactional(readOnly = true)
+	public UserDTO findByLogin(String login) {
+		// TODO Auto-generated method stub
+		return dao.findByLogin(login);
+	}
+    @Transactional(readOnly = true)
+	public UserDTO authanticate(String login, String password) {
+		// TODO Auto-generated method stub
+		return dao.authanticate(login, password);
+	}
+    @Transactional(readOnly = true)
+	public List search(UserDTO dto, int pageNo, int pageSize) {
+		// TODO Auto-generated method stub
+		return dao.search(dto, pageNo, pageSize);
 	}
 
 }
