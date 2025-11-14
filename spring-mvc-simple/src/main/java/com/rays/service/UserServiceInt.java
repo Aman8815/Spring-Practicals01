@@ -8,6 +8,7 @@ public interface UserServiceInt {
 	
 	public long add(UserDTO dto);
 	public long update(UserDTO dto);
+	public void delete(int id);
 	public UserDTO findByPk(long id);
 	public UserDTO findByLogin(String login);
 	public UserDTO authonticate(String login , String password);

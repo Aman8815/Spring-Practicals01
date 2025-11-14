@@ -2,8 +2,10 @@ package com.rays.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,32 +25,80 @@ public class UserDAOImpl  implements UserDAOInt{
 
 	@Override
 	public long update(UserDTO dto) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.update(dto);
 		return 0;
 	}
 
 	@Override
-	public UserDTO findByPk(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDTO findByPk(long pk) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		UserDTO dto = null;
+		dto = (UserDTO) sessionFactory.getCurrentSession().get(UserDTO.class, pk);
+		return dto; 
+		
 	}
 
 	@Override
 	public UserDTO findByLogin(String login) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		UserDTO dto = null;
+		Criteria criteria = session.createCriteria(UserDTO.class);
+		 criteria.add(Restrictions.eq("login",login));
+		dto =  (UserDTO) criteria.list();
+		
+		return dto;
 	}
 
 	@Override
 	public UserDTO authonticate(String login, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		UserDTO dto = null;
+		Criteria criteria = session.createCriteria(UserDTO.class);
+		 criteria.add(Restrictions.eq("login",login));
+		 criteria.add(Restrictions.eq("password", password));
+		 List<UserDTO> list = criteria.list();
+		 dto =(UserDTO) list.get(0);
+		return dto;
 	}
 
 	@Override
 	public List<UserDTO> search(UserDTO dto, int pageNO, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(UserDTO.class);
+		
+		if(dto != null) {
+			
+			if(dto.getFirstName()!=null&&dto.getFirstName().length()>0) {
+				criteria.add(Restrictions.like("firstName",dto.getFirstName()));
+			}
+			if(dto.getLastName()!=null&&dto.getLastName().length()>0) {
+				criteria.add(Restrictions.ilike("lastName",dto.getLastName()));
+			}
+			if(dto.getLogin()!=null&&dto.getLogin().length()>0) {
+				criteria.add(Restrictions.like("login", dto.getLogin()));
+			}
+		}
+		
+		 pageNO = (pageNO-1)*pageSize;
+			  
+			criteria.setFirstResult(pageNO);
+			criteria.setMaxResults(pageSize);
+			
+			 List<UserDTO> list = criteria.list();
+			
+		
+		return list;
+	}
+
+	@Override
+	public void delete(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		 session.delete(id);
+		
+		
 	}
 
 }

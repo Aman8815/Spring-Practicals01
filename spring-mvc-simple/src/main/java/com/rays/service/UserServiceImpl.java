@@ -21,33 +21,45 @@ public class UserServiceImpl implements UserServiceInt {
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public long update(UserDTO dto) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public UserDTO findByPk(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findByPk(id);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public UserDTO findByLogin(String login) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findByLogin(login);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public UserDTO authonticate(String login, String password) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.authonticate(login, password);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public List<UserDTO> search(UserDTO dto, int pageNO, int pageSize) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.search(dto, pageNO, pageSize);
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void delete(int id) {
+		dao.delete(id);
+		
 	}
 
 }

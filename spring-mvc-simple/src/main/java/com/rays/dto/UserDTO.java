@@ -15,7 +15,7 @@ public class UserDTO {
      @GeneratedValue(generator="ncspk")
      @GenericGenerator(name="ncspk",strategy = "native")
      @Column(name="id",nullable = false,unique = true)
-	private int id;
+	private long id;
      @Column(name="firstName", length = 50)
 	private String firstName;
      @Column(name="lastName", length = 50)
@@ -24,10 +24,10 @@ public class UserDTO {
 	private String login;
      @Column(name="password", length = 50)
 	private String password;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getFirstName() {

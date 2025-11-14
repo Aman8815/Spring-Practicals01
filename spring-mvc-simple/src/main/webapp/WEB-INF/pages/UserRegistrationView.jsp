@@ -11,6 +11,7 @@
 <title>User_Registration form</title>
 </head>
 <body >
+<%@ include file="Header.jsp" %>
   <sf:form modelAttribute="form" method="post">
   <div align="center">
    <h1 style="color: navy">User Registration Form</h1>
@@ -33,10 +34,12 @@
       </tr>
       <tr>
 					<th></th>
-					<td style="text-decoration: underline;"><input type="submit" name="operation" value="signUp">&nbsp;&nbsp;<a href="Userlogin">signIn</a></td>
+					<td style="text-decoration: underline;"><input type="submit" name="operation" value="signUp">&nbsp;&nbsp;
+					<input type="reset" name="operration" vlaue="singhIn">
 					
 				</tr>
     </table>
+    <%@include file="Footer.jsp" %>
   </div>
   </sf:form>
 </body>

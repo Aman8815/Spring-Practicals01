@@ -7,10 +7,11 @@
 <title>Welcome</title>
 </head>
 <body>
+<%@ include file="Header.jsp"%>
+
 	<div align="center">
-		<h1 style="color: green">${message}</h1>
-		<a href="Employee">Employee Register</a>
-		<a href="Register">User Register</a>
+		<h1 style="color: red;">${message}</h1>
 	</div>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>
