@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.aop.ThrowsAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,9 +19,11 @@ public class UserDAOImpl  implements UserDAOInt{
 	public long add(UserDTO dto) {
 		
 		Session session = sessionFactory.getCurrentSession();
+		UserDAOImpl user = new UserDAOImpl();
+		 session.save(dto);
+		 return 0;
+	
 		
-		int pk = (int) session.save(dto);
-		return pk;
 	}
 
 	@Override
@@ -47,8 +50,11 @@ public class UserDAOImpl  implements UserDAOInt{
 		UserDTO dto = null;
 		Criteria criteria = session.createCriteria(UserDTO.class);
 		 criteria.add(Restrictions.eq("login",login));
-		dto =  (UserDTO) criteria.list();
-		
+		List<UserDTO> list =criteria.list();
+		System.out.println(list.size());
+		if(list.size()>0) {
+		dto = (UserDTO) list.get(0);
+		}
 		return dto;
 	}
 
@@ -57,8 +63,8 @@ public class UserDAOImpl  implements UserDAOInt{
 		Session session = sessionFactory.getCurrentSession();
 		UserDTO dto = null;
 		Criteria criteria = session.createCriteria(UserDTO.class);
-		 criteria.add(Restrictions.eq("login",login));
-		 criteria.add(Restrictions.eq("password", password));
+		 criteria.add(Restrictions.like("login",login));
+		 criteria.add(Restrictions.like("password", password));
 		 List<UserDTO> list = criteria.list();
 		 dto =(UserDTO) list.get(0);
 		return dto;
@@ -95,8 +101,8 @@ public class UserDAOImpl  implements UserDAOInt{
 
 	@Override
 	public void delete(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		 session.delete(id);
+		UserDTO dto = findByPk(id);
+		sessionFactory.getCurrentSession().delete(dto);
 		
 		
 	}

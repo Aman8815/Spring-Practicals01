@@ -16,18 +16,23 @@
 	<div align="center">
 		<sf:form method="post" modelAttribute="form">
 			<h2>User List</h2>
-			<h2 style="color: red">${errorMsg}</h2>
-			<h2 style="color: green">${successMsg}</h2>
+			<h2 style="color: red">${emsg}</h2>
+			<h2 style="color: green">${smsg}</h2>
 			<sf:hidden path="pageNo" />
 			<table>
 				<tr>
+					<th>FirstName:</th>
 					<td><sf:input path="firstName" />&nbsp; &nbsp;</td>
+					<th>Login:</th>
+					<td><sf:input path="Login" />&nbsp; &nbsp;</td>
 					<td><input type="submit" name="operation" value="search">
 					</td>
+
 				</tr>
+
 			</table>
 			<table style="width: 100%" border="1">
-				<tr>
+				<tr style="background-color: red">
 					<th>Select</th>
 					<th>ID</th>
 					<th>FirstName</th>
@@ -36,10 +41,11 @@
 					<th>Password</th>
 					<th>Edit</th>
 				</tr>
-				<c:forEach items="${list}" var="user">
-					<tr align="center">
+				<c:forEach items="${list}" var="user" varStatus="i">
+					<c:set var="start" value="${(form.pageNo - 1) * 5}" />
+					<tr align="center" style="background-image: none;">
 						<td><sf:checkbox path="ids" value="${user.id}" /></td>
-						<td><c:out value="${user.id }"></c:out></td>
+						<td><c:out value="${start+i.index+1}"></c:out></td>
 						<td><c:out value="${user.firstName }"></c:out></td>
 						<td><c:out value="${user.lastName }"></c:out></td>
 						<td><c:out value="${user.login }"></c:out></td>

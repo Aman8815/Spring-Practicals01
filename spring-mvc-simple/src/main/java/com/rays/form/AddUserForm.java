@@ -1,14 +1,29 @@
 package com.rays.form;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class AddUserForm {
 
 	private long id;
+	@NotEmpty(message = "FirstName is Requird")
 	private String FirstName;
+	@NotEmpty(message = "lastName is Requird")
 	private String lastName;
+	@NotEmpty(message = "Login is Requird")
 	private String Login;
+	@NotEmpty(message = "password is Requird")
 	private String password;
 	private long[] ids;
 	private int pageNo;
+	private int next;
+
+	public int getNext() {
+		return next;
+	}
+
+	public void setNext(int next) {
+		this.next = next;
+	}
 
 	public int getPageNo() {
 		return pageNo;

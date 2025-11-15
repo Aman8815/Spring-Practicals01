@@ -21,21 +21,25 @@
       <tr>
        <th align="left">firstName :</th>
        <td><sf:input path="firstName" placeholder="Enter the FirstName"/></td>
+       <td style="color: red"><sf:errors path="firstName"></sf:errors></td>
       </tr>
       <tr>
       <th align="left">lastName :</th>
       <td><sf:input path="lastName" placeholder="Enter the LastName"/></td>
+       <td style="color: red"><sf:errors path="lastName"></sf:errors></td>
       </tr>
        <th align="left">login :</th>
       <td><sf:input path="login" placeholder="Enter the login"/></td>
+       <td style="color: red"><sf:errors path="login"></sf:errors></td>
       </tr>
        <th align="left">password :</th>
       <td><sf:password path="password" placeholder="Enter the password"/></td>
+       <td style="color: red"><sf:errors path="password"></sf:errors></td>
       </tr>
       <tr>
 					<th></th>
 					<td style="text-decoration: underline;"><input type="submit" name="operation" value="signUp">&nbsp;&nbsp;
-					<input type="reset" name="operration" vlaue="singhIn">
+					<input type="submit" name="operation" value="reset">
 					
 				</tr>
     </table>

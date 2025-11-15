@@ -15,11 +15,13 @@
 			<tr>
 				<th>Login:</th>
 				<td><sf:input path="login" placeholder="Enter the login" /></td>
+				<td style="color: red"><sf:errors path="login"></sf:errors></td>
 			</tr>
 			<tr>
 				<th>Password</th>
 				<td><sf:password path="password"
 						placeholder="Enter the Password" /></td>
+				<td style="color: red"><sf:errors path="password"></sf:errors></td>
 			</tr>
 			<tr>
 				<th></th>

@@ -1,12 +1,19 @@
 package com.rays.form;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserRegistractionForm {
 	
 	private int id = 0;
+	@NotEmpty(message = "FirsName is Requaird")
 	private String firstName;
+	@NotEmpty(message = "lastName is Requaird")
 	private String lastName;
+	@NotEmpty(message = "login is Requaird")
 	private String login;
+	@NotEmpty(message = "password is Requaird")
 	private String password;
+
 	private String address;
 	private int salary;
 	public String getAddress() {

@@ -21,23 +21,28 @@
 			<c:if test="${form.id==0}">
 				<h1 style="color: navy">Add User</h1>
 			</c:if>
-			<h2 style="color: green">${msg}</h2>
+			<h2 style="color: green">${smsg}</h2>
+			<h2 style="color: red">${emsg}</h2>
 			<table>
 				<tr>
 					<th align="left">First Name :</th>
-					<td><sf:input path="firstName" /></td>
+					<td><sf:input path="firstName" placeholder ="Enter the firstName"/></td>
+					<td style="color: red"><sf:errors path="FirstName"></sf:errors></td>
 				</tr>
 				<tr>
 					<th align="left">Last Name :</th>
-					<td><sf:input path="lastName" /></td>
+					<td><sf:input path="lastName" placeholder ="Enter the lastName"/></td>
+					<td style="color: red"><sf:errors path = "lastName"></sf:errors></td>
 				</tr>
 				<tr>
 					<th align="left">Login ID :</th>
-					<td><sf:input path="login" /></td>
+					<td><sf:input path="login" placeholder ="Enter the login"/></td>
+					<td style="color: red"><sf:errors path = "Login"></sf:errors></td>
 				</tr>
 				<tr>
 					<th align="left">Password :</th>
-					<td><sf:input path="password" /></td>
+					<td><sf:input path="password"  placeholder ="Enter the password"/></td>
+					<td style="color: red"><sf:errors path = "password"></sf:errors></td>
 				</tr>
 				<tr>
 					<th></th>

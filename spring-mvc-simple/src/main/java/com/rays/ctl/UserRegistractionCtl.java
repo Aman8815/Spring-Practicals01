@@ -1,12 +1,16 @@
 package com.rays.ctl;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rays.dto.UserDTO;
 import com.rays.form.UserRegistractionForm;
@@ -24,8 +28,15 @@ public class UserRegistractionCtl {
 	}
 	
 	@PostMapping
-	public String submit(@ModelAttribute("form") UserRegistractionForm form ,Model model) {
+	public String submit(@ModelAttribute("form") @Valid UserRegistractionForm form ,BindingResult result,
+			Model model,@RequestParam("operation") String operation) {
+		if(operation.equals("reset")) {
+			return "redirect:Register";
+		}
 		
+		if(result.hasErrors()) {
+			return "UserRegistrationView";
+		}
 		UserDTO dto = new UserDTO();
 		dto.setFirstName(form.getFirstName());
 		dto.setLastName(form.getLastName());

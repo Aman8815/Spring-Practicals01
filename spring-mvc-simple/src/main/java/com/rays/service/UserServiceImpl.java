@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mchange.util.DuplicateElementException;
 import com.rays.dao.UserDAOInt;
 import com.rays.dto.UserDTO;
 @Service
@@ -15,9 +16,15 @@ public class UserServiceImpl implements UserServiceInt {
 	public UserDAOInt dao;
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public long add(UserDTO dto) {
-		// TODO Auto-generated method stub
-		return dao.add(dto) ;
+	public long add(UserDTO dto) throws Exception {
+		UserDTO existdto = dao.findByLogin(dto.getLogin());
+		long pk = 0;
+		if(existdto!=null) {
+			throw new Exception("LoginId already exist");
+		}
+		pk = dao.add(dto);
+		System.out.println("pk =."+pk);
+		return pk;
 	}
 
 	@Override
