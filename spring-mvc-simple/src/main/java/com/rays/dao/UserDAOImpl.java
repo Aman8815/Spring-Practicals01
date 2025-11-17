@@ -66,7 +66,9 @@ public class UserDAOImpl  implements UserDAOInt{
 		 criteria.add(Restrictions.like("login",login));
 		 criteria.add(Restrictions.like("password", password));
 		 List<UserDTO> list = criteria.list();
+		 if(list.size()>0) {
 		 dto =(UserDTO) list.get(0);
+		 }
 		return dto;
 	}
 

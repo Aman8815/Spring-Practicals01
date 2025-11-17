@@ -12,7 +12,7 @@
 <title>User</title>
 </head>
 <body>
-	<%@ include file="Header.jsp"%>
+<%-- 	<%@ include file="Header.jsp"%> --%>
 	<sf:form method="post" modelAttribute="form">
 		<div align="center">
 			<c:if test="${form.id>0}">
@@ -36,7 +36,7 @@
 				</tr>
 				<tr>
 					<th align="left">Login ID :</th>
-					<td><sf:input path="login" placeholder ="Enter the login"/></td>
+					<td><sf:input path="login" placeholder ="Enter the login" readonly="false"/></td>
 					<td style="color: red"><sf:errors path = "Login"></sf:errors></td>
 				</tr>
 				<tr>
@@ -51,6 +51,6 @@
 			</table>
 		</div>
 	</sf:form>
-	<%@ include file="Footer.jsp"%>
+<%-- 	<%@ include file="Footer.jsp"%> --%>
 </body>
 </html>

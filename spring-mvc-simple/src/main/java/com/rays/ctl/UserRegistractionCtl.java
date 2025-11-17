@@ -44,8 +44,14 @@ public class UserRegistractionCtl {
 		dto.setPassword(form.getPassword());
 		
 		 
-	 int pk =	(int) service.add(dto);
-	 model.addAttribute("smsg","Data Aaded successfully");
+	 try {
+		int pk =	(int) service.add(dto);
+		model.addAttribute("smsg","Data Aaded successfully");
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		model.addAttribute("emsg",e.getMessage());
+	}
+
 		return "UserRegistrationView";
 	}
 

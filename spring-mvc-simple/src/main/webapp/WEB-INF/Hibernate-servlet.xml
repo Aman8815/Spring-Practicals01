@@ -40,7 +40,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.rays.dto.UserDTO</value>
-				<value>com.rays.dto.EmployeeDTO</value>
+				<!-- <value>com.rays.dto.EmployeeDTO</value>-->
 			</list>
 		</property>
 	</bean>

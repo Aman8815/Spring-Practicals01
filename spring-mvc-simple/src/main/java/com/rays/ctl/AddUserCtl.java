@@ -19,7 +19,7 @@ import com.rays.form.AddUserForm;
 import com.rays.service.UserServiceInt;
 
 @Controller
-@RequestMapping("/AddUserCtl")
+@RequestMapping("/ctl/AddUserCtl")
 public class AddUserCtl {
 	@Autowired
 	public UserServiceInt service;
@@ -70,8 +70,16 @@ public class AddUserCtl {
 
 		if (operation != null && operation.equals("Update")) {
 
-			service.update(dto);
-			model.addAttribute("msg", "Data UPdate Successfully");
+			
+				try {
+					service.update(dto);
+					model.addAttribute("smsg", "Data UPdate Successfully");
+				} catch (Exception e) {
+					model.addAttribute("emsg",e.getMessage());// TODO Auto-generated catch block
+					
+				}
+				
+			
 
 		}
 		if (operation != null && operation.equals("Save")) {

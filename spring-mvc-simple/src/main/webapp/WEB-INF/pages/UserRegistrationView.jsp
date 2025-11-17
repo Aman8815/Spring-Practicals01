@@ -11,7 +11,7 @@
 <title>User_Registration form</title>
 </head>
 <body >
-<%@ include file="Header.jsp" %>
+<%-- <%@ include file="Header.jsp" %> --%>
   <sf:form modelAttribute="form" method="post">
   <div align="center">
    <h1 style="color: navy">User Registration Form</h1>
@@ -43,7 +43,7 @@
 					
 				</tr>
     </table>
-    <%@include file="Footer.jsp" %>
+<%--     <%@include file="Footer.jsp" %> --%>
   </div>
   </sf:form>
 </body>

@@ -10,28 +10,40 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mchange.util.DuplicateElementException;
 import com.rays.dao.UserDAOInt;
 import com.rays.dto.UserDTO;
+
 @Service
 public class UserServiceImpl implements UserServiceInt {
-    @Autowired
+	@Autowired
 	public UserDAOInt dao;
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public long add(UserDTO dto) throws Exception {
 		UserDTO existdto = dao.findByLogin(dto.getLogin());
 		long pk = 0;
-		if(existdto!=null) {
+		if (existdto != null) {
 			throw new Exception("LoginId already exist");
 		}
 		pk = dao.add(dto);
-		System.out.println("pk =."+pk);
+		System.out.println("pk =." + pk);
 		return pk;
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public long update(UserDTO dto) {
-		// TODO Auto-generated method stub
-		return dao.update(dto);
+	public long update(UserDTO dto) throws Exception {
+        UserDTO existBean = findByLogin(dto.getLogin());
+        long pk =0;
+        System.out.println(existBean.getId());
+        System.out.println(dto.getId());
+        if(existBean!=null) {
+        	 throw new Exception("LoginId Already Exist");
+        }else {
+        	pk =  dao.update(dto);
+       
+        }
+		return pk;
+
 	}
 
 	@Override
@@ -50,9 +62,13 @@ public class UserServiceImpl implements UserServiceInt {
 
 	@Override
 	@Transactional(readOnly = false)
-	public UserDTO authonticate(String login, String password) {
-		// TODO Auto-generated method stub
-		return dao.authonticate(login, password);
+	public UserDTO authonticate(String login, String password) throws Exception {
+		UserDTO dto = dao.authonticate(login, password);
+		if (dto == null) {
+			throw new Exception("LoginId And Password Invalid");
+		} else {
+			return dto;
+		}
 	}
 
 	@Override
@@ -66,7 +82,7 @@ public class UserServiceImpl implements UserServiceInt {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(int id) {
 		dao.delete(id);
-		
+
 	}
 
 }

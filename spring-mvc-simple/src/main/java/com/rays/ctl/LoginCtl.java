@@ -29,7 +29,7 @@ public class LoginCtl {
 		System.out.println("In diplay method login get");
 		if (operation != null && operation.length() > 0) {
 			session.invalidate();
-			model.addAttribute("erormsg", "User Logout Successfully");
+			model.addAttribute("smsg", "User Logout Successfully");
 			return "Login";
 		}
 
@@ -46,7 +46,12 @@ public class LoginCtl {
     		 return "Login";
     	 }
 		UserDTO dto = null;
-		dto = service.authonticate(form.getLogin(), form.getPassword());
+		try {
+			dto = service.authonticate(form.getLogin(), form.getPassword());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			model.addAttribute("emsg",e.getMessage());
+		}
 
 		if (dto != null) {
 			session.setAttribute("user", dto);

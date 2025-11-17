@@ -11,11 +11,33 @@
 
 	<context:component-scan base-package="com.rays" />
 
-	<import resource="hibernate-servlet.xml" />
+	<import resource="Hibernate-servlet.xml" />
 
-	<bean id="ViewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/pages/"></property>
-		<property name="suffix" value=".jsp"></property>
+	<mvc:annotation-driven />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/ctl/**" />
+			<bean class="com.rays.ctl.FronCtl"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<!-- <bean id="ViewResolver" -->
+	<!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="prefix" value="/WEB-INF/pages/"></property> -->
+	<!-- <property name="suffix" value=".jsp"></property> -->
+	<!-- </bean> -->
+
+	<bean
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
 	</bean>
 </beans>

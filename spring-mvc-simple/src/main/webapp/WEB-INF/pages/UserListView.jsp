@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="Header.jsp"%>
+<%-- 	<%@ include file="Header.jsp"%> --%>
 	<div align="center">
 		<sf:form method="post" modelAttribute="form">
 			<h2>User List</h2>
@@ -51,7 +51,7 @@
 						<td><c:out value="${user.login }"></c:out></td>
 						<td><c:out value="${user.password }"></c:out></td>
 						<td align="center"><a
-							href="<c:url value="/AddUserCtl?id=${user.id}" />">Edit</a></td>
+							href="<c:url value="/ctl/AddUserCtl?id=${user.id}" />">Edit</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -68,7 +68,7 @@
 				</tr>
 			</table>
 		</sf:form>
-		<%@ include file="Footer.jsp"%>
+<%-- 		<%@ include file="Footer.jsp"%> --%>
 	</div>
 </body>
 </html>
