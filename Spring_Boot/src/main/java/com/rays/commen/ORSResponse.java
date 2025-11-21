@@ -1,7 +1,11 @@
 package com.rays.commen;
 
 import java.util.HashMap;
+
 import java.util.Map;
+
+// it ganerate response and postman api testing karta hai
+
 
 public class ORSResponse {
 	
