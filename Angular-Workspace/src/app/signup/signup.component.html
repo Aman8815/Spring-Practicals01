@@ -1,0 +1,31 @@
+
+<div align="center">
+    <h1 >User Registration</h1>
+
+    <form (submit)="signUp()">
+        <table>
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="firstName" [(ngModel)]="form.firstName" placeholder="Enter the first name"></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><input type="text" name="lastName" [(ngModel)]="form.lastName" placeholder="Enter the last name"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email" [(ngModel)]="form.email" placeholder="Enter the email"></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" name="password" [(ngModel)]="form.password" placeholder="Enter the password"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="signUp"></td>
+
+            </tr>
+        </table>
+    </form>
+
+    </div>
